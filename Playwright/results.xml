@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="4.120512000000002">
+<testsuite name="example.spec.js" timestamp="2026-06-14T08:32:41.624Z" hostname="chromium" tests="2" failures="0" skipped="0" time="1.63" errors="0">
+<testcase name="has title" classname="example.spec.js" time="0.757">
+</testcase>
+<testcase name="get started link" classname="example.spec.js" time="0.873">
+</testcase>
+</testsuite>
+<testsuite name="login.spec.js" timestamp="2026-06-14T08:32:41.624Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.836" errors="0">
+<testcase name="Youtube title test" classname="login.spec.js" time="2.836">
+</testcase>
+</testsuite>
+</testsuites>
