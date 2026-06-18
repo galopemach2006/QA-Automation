@@ -9,5 +9,5 @@ test("Login Test: Username - admin, Password - admin123", async ({page}) => {
 })
 
 test("Login Test", async ({page}) => {
-
+    await page.goto("https://practice.qabrains.com/")
 })
