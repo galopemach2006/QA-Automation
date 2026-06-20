@@ -37,37 +37,31 @@ export class LoginPage {
 
     async bothCredentialsTrue() {
         console.log("Both Credentials Correct")
-        await this.email_password("qa_testers@qabrains.com", "Password123")
         await expect(this.successHeader).toBeVisible()
     }
 
     async wrongEmail() {
         console.log("Wrong Email")
-        await this.email_password("qa_testers@qabrains", "Password123")
         await expect(this.wrongEmailError).toBeVisible()
     }
 
     async wrongPassword() {
         console.log("Wrong Password")
-        await this.email_password("qa_testers@qabrains.com", "Password")
         await expect(this.wrongPasswordError).toBeVisible()
     }
 
     async bothCredentialsFalse() {
         console.log("Both Credentials Wrong")
-        await this.email_password("qa_testers@qabrains", "Password")
         await expect(this.bothCredentialsError).toBeVisible()
     }
         
     async emailBlank() {
         console.log("Blank Email")
-        await this.email_password("", "Password")
         await expect(this.requiredEmail).toBeVisible()
     }
 
     async passwordBlank() {
         console.log("Blank Password")
-        await this.email_password("qa_testers@qabrains", "")
         await expect(this.requiredPassword).toBeVisible()
     }
 }
