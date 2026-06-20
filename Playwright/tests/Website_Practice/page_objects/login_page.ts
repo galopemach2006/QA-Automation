@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from "@playwright/test";
 
-export class LoginPage {
+export class loginPage {
     readonly page: Page;
     readonly emailInput: Locator;
     readonly passwordInput: Locator;

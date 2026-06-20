@@ -1,44 +1,41 @@
-import {test, expect} from "@playwright/test"
-import {LoginPage} from "../page_objects/login_page"
+import { test, expect } from "@playwright/test";
+import { loginPage } from "../page_objects/login_page";
 
-test("Both Correct Credentials", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate()
-    await login.email_password("qa_testers@qabrains.com", "Password123")
-    await login.bothCredentialsTrue()
-})
+test.describe("Testing Login", () => {
+  let login: loginPage
 
-test("Wrong Email", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate()
-    await login.email_password("qa_testers@qabrains", "Password123")
-    await login.wrongEmail()
-})
+  test.beforeEach(async ({page}) => {
+    login = new loginPage(page)
+    login.navigate()
+  })
 
-test("Wrong Password", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate()
-    await login.email_password("qa_testers@qabrains.com", "Password")
-    await login.wrongPassword()
-})
+  test("Both Correct Credentials", async () => {
+    await login.email_password("qa_testers@qabrains.com", "Password123");
+    await login.bothCredentialsTrue();
+  });
 
-test("Both Wrong Credentials", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate() 
-    await login.email_password("qa_testers@qabrains", "Password")
-    await login.bothCredentialsFalse()
-})
+  test("Wrong Email", async () => {
+    await login.email_password("qa_testers@qabrains", "Password123");
+    await login.wrongEmail();
+  });
 
-test("Blank Email", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate()
-    await login.email_password("", "Password123")
-    await login.emailBlank()
-})
+  test("Wrong Password", async () => {
+    await login.email_password("qa_testers@qabrains.com", "Password");
+    await login.wrongPassword();
+  });
 
-test("Blank Password", async ({page}) => {
-    const login = new LoginPage(page)
-    await login.navigate()
-    await login.email_password("qa_testers@qabrains.com", "")
-    await login.passwordBlank()
-})
+  test("Both Wrong Credentials", async () => {
+    await login.email_password("qa_testers@qabrains", "Password");
+    await login.bothCredentialsFalse();
+  });
+
+  test("Blank Email", async () => {
+    await login.email_password("", "Password123");
+    await login.emailBlank();
+  });
+
+  test("Blank Password", async () => {
+    await login.email_password("qa_testers@qabrains.com", "");
+    await login.passwordBlank();
+  });
+});
