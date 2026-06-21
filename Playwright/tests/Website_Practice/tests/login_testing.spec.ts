@@ -4,6 +4,7 @@ import login_data from "../test-data/login_data.json"
 
 test.describe("Testing Login", () => {
   let login: loginPage
+  let c = login_data.differentCredentials
 
   test.beforeEach(async ({page}) => {
     login = new loginPage(page)
@@ -11,38 +12,33 @@ test.describe("Testing Login", () => {
   })  
 
   test("Both Correct Credentials", async () => {
-    const c = login_data.bothCredentialsCorrect
-    await login.email_password(c.email, c.password);
+    await login.email_password(c.rightEmail, c.rightPassword);
     await expect(login.successHeader).toBeVisible()
   });
 
   test("Wrong Email", async () => {
-    const c = login_data.wrongEmail
-    await login.email_password(c.email, c.password);
+    await login.email_password(c.wrongEmail, c.rightPassword);
     await expect(login.wrongEmailError).toBeVisible()
   });
 
   test("Wrong Password", async () => {
-    const c = login_data.wrongPassword
-    await login.email_password(c.email, c.password);
+    await login.email_password(c.rightEmail, c.wrongPassword);
     await expect(login.wrongPasswordError).toBeVisible()
   });
 
   test("Both Wrong Credentials", async () => {
-    const c = login_data.bothWrongCredentials
+    const c = login_data.differentCredentials.bothWrongCredentials
     await login.email_password(c.email, c.password);
     await expect(login.bothCredentialsError).toBeVisible()
   });
 
   test("Blank Email", async () => {
-    const c = login_data.blankEmail
-    await login.email_password(c.email, c.password);
+    await login.email_password(c.blankEmail, c.rightPassword);
     await expect(login.requiredEmail).toBeVisible()
   });
 
   test("Blank Password", async () => {
-    const c = login_data.blankPassword
-    await login.email_password(c.email, c.password);
+    await login.email_password(c.rightEmail, c.blankPassword);
     await expect(login.requiredPassword).toBeVisible()
   });
 });

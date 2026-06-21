@@ -1,31 +1,16 @@
 {
-    "bothCredentialsCorrect": {
-            "email" : "qa_testers@qabrains.com",
-            "password" : "Password123"
-    },
+        "differentCredentials": {
+            "rightEmail" : "qa_testers@qabrains.com",
+            "rightPassword" : "Password123",
+            "wrongEmail" : "qa_testers@qabrains",
+            "wrongPassword": "Password",
 
-     "wrongEmail": {
-            "email" : "qa_testers@qabrains",
-            "password" : "Password123"
-    },
-
-    "wrongPassword": {
-            "email" : "qa_testers@qabrains.com",
-            "password" : "Password"
-    },
-
-    "bothWrongCredentials": {
-            "email" : "qa_testers@qabrains",
-            "password" : "Password"
-    },
-
-    "blankEmail": {
-            "email" : "",
-            "password" : "Password123"
-    },
-
-    "blankPassword":{
-            "email" : "qa_testers@qabrains.com",
-            "password" : ""
-    }
+            "bothWrongCredentials" : {
+                "email" : "qa_testers@qabrains",
+                "password" : "Password"
+            },
+            
+            "blankEmail": "",
+            "blankPassword": ""
+        }
 }
