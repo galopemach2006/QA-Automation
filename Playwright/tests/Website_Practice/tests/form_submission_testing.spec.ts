@@ -7,6 +7,7 @@ test.describe("Submission Forms Testing", () => {
   const data = forms_data.completeData
   const bData = forms_data.blankData
   const iData = forms_data.invalidData
+  const testData = Object.assign({}, data)
 
   test.beforeEach(async ({page}) => {
     f = new forms(page)
@@ -14,10 +15,8 @@ test.describe("Submission Forms Testing", () => {
   })
 
   test("Complete Information", async () => {
-    await f.placeholderInformation(data.name, data.email, data.contactNo, data.date, data.uploadFile);
-    await f.radioButtonCheck(data.color);
-    await f.locatorInformation(data.checkbox, data.country);
-    await f.completeInformation();
+    await f.fillInformation(data)
+    await expect(f.success).toBeVisible()
   });
 
   test("Blank Information", async () => {
@@ -26,23 +25,20 @@ test.describe("Submission Forms Testing", () => {
   });
 
   test("Email Verification - Invalid Format", async () => {
-    await f.placeholderInformation(data.name, iData.invalidEmail2, data.contactNo, data.date, data.uploadFile);
-    await f.radioButtonCheck(data.color);
-    await f.locatorInformation(data.checkbox, data.country);
+    testData.email = iData.invalidEmail2
+    await f.fillInformation(testData)
     await f.emailInvalidFormat(`Please include an '@' in the email address. '${iData.invalidEmail2}' is missing an '@'.`);
   });
 
   test("Email Verification - Blank Email", async () => {
-    await f.placeholderInformation(data.name, bData.email, data.contactNo, data.date, data.uploadFile);
-    await f.radioButtonCheck(data.color);
-    await f.locatorInformation(data.checkbox, data.country);
-    await f.noEmail();
+    testData.email = bData.email
+    await f.fillInformation(testData)
+    await expect(f.page.getByText("Email is a required field")).toBeVisible()
   })
 
   test("Email Verification - Invalid Email", async () => {
-    await f.placeholderInformation(data.name, iData.invalidEmail1, data.contactNo, data.date, data.uploadFile);
-    await f.radioButtonCheck(data.color);
-    await f.locatorInformation(data.checkbox, data.country);
+    testData.email = iData.invalidEmail1
+    await f.fillInformation(testData);
     await f.emailInvalidFormat(`Please include an '@' in the email address. '${iData.invalidEmail1}' is missing an '@'.`);
   });
 });

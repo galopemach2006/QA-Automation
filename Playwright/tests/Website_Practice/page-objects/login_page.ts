@@ -25,9 +25,9 @@ export class loginPage {
         this.requiredPassword = page.getByText("Password is a required field")
     }
 
-    async email_password(email : string, password : string) {
+    async email_password(email: string, password: string) {
         await this.emailInput.fill(email)
         await this.passwordInput.fill(password)
         await this.button.click()
     }
-}
+}       

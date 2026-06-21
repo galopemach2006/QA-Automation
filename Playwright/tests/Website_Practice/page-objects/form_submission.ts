@@ -1,5 +1,16 @@
 import {Page, Locator, expect} from "@playwright/test"
 
+export interface Information {
+    name: string
+    email: string, 
+    contactNo: string
+    date: string
+    uploadFiles: string
+    radioColor: string
+    checkboxes: string[]
+    country: string
+}
+
 export class forms{
     readonly page: Page
     readonly nameInput: Locator
@@ -27,33 +38,22 @@ export class forms{
         await this.page.goto("https://practice.qabrains.com/form-submission")
     }
 
-    async placeholderInformation(name: string, email: string, contactNumber: string, date: string, files: string) {
-        await this.nameInput.fill(name)
-        await this.emailInput.fill(email)
-        await this.contactNumberInput.fill(contactNumber)
-        await this.dateInput.fill(date)
-        await this.uploadFiles.setInputFiles(files)
-    }
+    async fillInformation(i: Information) {
+        await this.nameInput.fill(i.name)
+        await this.emailInput.fill(i.email)
+        await this.contactNumberInput.fill(i.contactNo)
+        await this.dateInput.fill(i.date)
+        await this.uploadFiles.setInputFiles(i.uploadFiles)
+        await this.page.getByRole('radio', {name: i.radioColor, exact: true}).check()
 
-    async locatorInformation(checkboxes: string[], country: string) {
-        for (const c of checkboxes) {
+        for (const c of i.checkboxes) {
             await this.page.getByLabel(c).check()
         }
        
-        await this.country.selectOption(country)
+        await this.country.selectOption(i.country)
         await this.submit.click()
     }
 
-    async completeInformation() {
-        console.log("Complete Information")
-        await expect(this.success).toBeVisible()
-    }
-
-    async radioButtonCheck(radioColor: string) {
-        await this.page.getByRole('radio', {name: radioColor, exact: true}).check()
-    }
-
-    //Email Verifier
     async emailInvalidFormat(text: string) {
         await expect(this.emailInput).toHaveJSProperty("validationMessage", text)
     }
@@ -66,9 +66,7 @@ export class forms{
         await expect(this.page.getByText("Email must be a valid email")).toBeVisible()
     }
 
-    //Blank Information
     async blankInformation() {
-        console.log("Blank Information")
         await expect(this.success).toBeHidden()
         await expect(this.page.getByText("Name is a required field")).toBeVisible()
         await expect(this.page.getByText("Email is a required field")).toBeVisible()

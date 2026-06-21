@@ -4,9 +4,9 @@
         "email": "macksgale@yahoo.com",
         "contactNo": "09619557174",
         "date": "2026-05-12",
-        "uploadFile": "./Playwright/tests/Website_Practice/test-upload/jack.txt", 
-        "color": "Red",
-        "checkbox": ["Pasta", "Pizza"],
+        "uploadFiles": "./Playwright/tests/Website_Practice/test-upload/jack.txt", 
+        "radioColor": "Red",
+        "checkboxes": ["Pasta", "Pizza"],
         "country": "Andorra"
     },
 
@@ -17,7 +17,7 @@
         "date": "",
         "uploadFile": "", 
         "color": "",
-        "checkbox": [""],
+        "checkbox": [],
         "country": ""
     },
 
