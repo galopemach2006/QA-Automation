@@ -27,7 +27,7 @@ test.describe("Testing Login", () => {
   });
 
   test("Both Wrong Credentials", async () => {
-    const c = login_data.differentCredentials.bothWrongCredentials
+    const = login_data.differentCredentials.bothWrongCredentials
     await login.email_password(c.email, c.password);
     await expect(login.bothCredentialsError).toBeVisible()
   });
