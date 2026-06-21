@@ -53,6 +53,7 @@ export class forms{
         await this.page.getByRole('radio', {name: radioColor, exact: true}).check()
     }
 
+    //Email Verifier
     async emailInvalidFormat(text: string) {
         await expect(this.emailInput).toHaveJSProperty("validationMessage", text)
     }
@@ -61,6 +62,11 @@ export class forms{
         await expect(this.page.getByText("Email is a required field")).toBeVisible()
     }
 
+    async emailInvalid() {
+        await expect(this.page.getByText("Email must be a valid email")).toBeVisible()
+    }
+
+    //Blank Information
     async blankInformation() {
         console.log("Blank Information")
         await expect(this.success).toBeHidden()

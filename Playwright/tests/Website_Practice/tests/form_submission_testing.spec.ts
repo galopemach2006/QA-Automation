@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { forms } from "../page_objects/form_submission";
+import { forms } from "../page-objects/form_submission";
 
 test.describe("Submission Forms Testing", () => {
   let f: forms
@@ -27,8 +27,7 @@ test.describe("Submission Forms Testing", () => {
     await f.blankInformation();
   });
 
-  test("Email Verification", async ({ page }) => {
-    //Wrong Format
+  test("Email Verification - Invalid Format", async ({ page }) => {
     await f.placeholderInformation(
       "Mach",
       "galopemachgmail.com",
@@ -36,13 +35,14 @@ test.describe("Submission Forms Testing", () => {
       "2026-05-12",
       "./upload/jack.txt",
     );
+    await f.radioButtonCheck("Red");
     await f.locatorInformation(["Pasta", "Pizza"], "Andorra");
-    await f.submitForm();
     await f.emailInvalidFormat(
       "Please include an '@' in the email address. 'galopemachgmail.com' is missing an '@'.",
     );
+  });
 
-    //Blank Email
+  test("Email Verification - Blank Email", async () => {
     await f.placeholderInformation(
       "Mach",
       "",
@@ -50,8 +50,23 @@ test.describe("Submission Forms Testing", () => {
       "2026-05-12",
       "./upload/jack.txt",
     );
+    await f.radioButtonCheck("Red");
     await f.locatorInformation(["Pasta", "Pizza"], "Andorra");
-    await f.submitForm();
     await f.noEmail();
+  })
+
+  test("Email Verification - Invalid Email", async () => {
+    await f.placeholderInformation(
+      "Mach",
+      "5hjhj453jhjk",
+      "09659637179",
+      "2026-05-12",
+      "./upload/jack.txt",
+    );
+    await f.radioButtonCheck("Red");
+    await f.locatorInformation(["Pasta", "Pizza"], "Andorra");
+    await f.emailInvalidFormat(
+      "Please include an '@' in the email address. '5hjhj453jhjk' is missing an '@'.",
+    );
   });
 });
