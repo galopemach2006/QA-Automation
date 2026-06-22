@@ -23,18 +23,18 @@ test.describe("Testing Login", () => {
 
   test("Wrong Password", async () => {
     await login.email_password(c.rightEmail, c.wrongPassword);
-    await expect(login.wrongPasswordError).toBeVisible()
+    await expect(login.wrongPasswordError).toBeVisible() 
   });
 
   test("Both Wrong Credentials", async () => {
     const c = login_data.differentCredentials.bothWrongCredentials
     await login.email_password(c.email, c.password);
-    await expect(login.bothCredentialsError).toBeVisible()
+    await expect(login.bothCredentialsError).toBeVisible()   
   });
 
   test("Blank Email", async () => {
     await login.email_password(c.blankEmail, c.rightPassword);
-    await expect(login.requiredEmail).toBeVisible()
+    await expect(login.requiredEmail).toBeVisible()   
   });
 
   test("Blank Password", async () => {
