@@ -12,15 +12,15 @@ export interface Information {
 }
 
 export class forms{
-    readonly page: Page
-    readonly nameInput: Locator
-    readonly emailInput: Locator
-    readonly contactNumberInput: Locator
-    readonly dateInput: Locator
-    readonly uploadFiles: Locator
-    readonly country: Locator
-    readonly submit: Locator
-    readonly success: Locator
+     page: Page
+     nameInput: Locator
+     emailInput: Locator
+     contactNumberInput: Locator
+     dateInput: Locator
+     uploadFiles: Locator
+     country: Locator
+     submit: Locator
+     success: Locator
 
     constructor(page: Page) {
         this.page = page
