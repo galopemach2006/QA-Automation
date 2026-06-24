@@ -1,0 +1,22 @@
+{
+    "credentials" : {
+        "rightCredentials" : {
+            "email": "standard_user",
+            "password" : "secret_sauce"  
+        },
+
+        "wrongCredentials" : {
+            "email": "standard",
+            "password" : "secret"
+        },
+
+        "blank": {
+            "email": "",
+            "password": ""
+        }
+    },
+
+    "errorLoginMessages": {
+        "errorMessage1":"Epic sadface: Username and password do not match any user in this service"
+    }
+}
