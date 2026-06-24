@@ -12,12 +12,10 @@ test.describe("Swag Labs Login", () => {
         await page.goto("https://www.saucedemo.com/")
     })
 
-    /*
     test.afterEach(async () => {
         console.log("Testing Complete")
     })
-        */
-
+        
     test("Login 001 - Valid Login", async ({page}) => {
         await c.fillLogin(d.rightCredentials)
         await expect(page.getByText("Swag Labs")).toBeVisible()
@@ -35,7 +33,7 @@ test.describe("Swag Labs Login", () => {
     })
 
     test("Login 004 - Wrong Password", async ({page}) => {
-        const wrongPassword = {...d.rightCredentials, email: d.wrongCredentials.password}
+        const wrongPassword = {...d.rightCredentials, password: d.wrongCredentials.password}
         await c.fillLogin(wrongPassword)
         await expect(page.getByText(e.errorMessage1)).toBeVisible()
     })
@@ -44,4 +42,17 @@ test.describe("Swag Labs Login", () => {
         await c.fillLogin(d.blank)
         await expect(page.getByText("Epic sadface: Username is required")).toBeVisible()
     })
+
+    test("Login 006 - Blank Username", async ({page}) => {
+        const blankUsername = {...d.rightCredentials, email: d.blank.email}
+        await c.fillLogin(blankUsername)
+        await expect(page.getByText("Epic sadface: Username is required")).toBeVisible()
+    })
+
+    test("Login 007 - Blank Password", async ({page}) => {
+        const blankUsername = {...d.rightCredentials, password: d.blank.password}
+        await c.fillLogin(blankUsername)
+        await expect(page.getByText("Epic sadface: Password is required")).toBeVisible()
+    })
+
 })

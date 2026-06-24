@@ -1,0 +1,10 @@
+{
+    "productName" : {
+        "product1" : "Sauce Labs Backpack",
+        "product2" : "Sauce Labs Bike Light"
+    },
+
+    "productNameLocator" : ".inventory_item_name", 
+    "productDescriptionLocator" : ".inventory_item_desc",
+    "productPriceLocator" : ".inventory_item_price"
+}
