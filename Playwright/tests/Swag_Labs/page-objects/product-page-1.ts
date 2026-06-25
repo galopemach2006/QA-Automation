@@ -1,8 +1,8 @@
 import {Page, Locator, expect} from "@playwright/test"
-import {Login} from "./login"
-import l from "../test-data/login_data.json"
+import {Login} from "./login-page"
+import l from "../test-data/login-data.json"
 
-export class products extends Login {
+export class ProductPage1 extends Login {
     productNameLocator : Locator
     productDescriptionLocator : Locator
     productPriceLocator : Locator 
@@ -20,7 +20,7 @@ export class products extends Login {
         this.addToCartBadge = page.locator("[data-test='shopping-cart-badge']")
     }
 
-    async productNameVerifier(): Promise<void> {
+    async login(): Promise<void> {
         const d = l.credentials.rightCredentials
         await this.fillLogin(d)
     }

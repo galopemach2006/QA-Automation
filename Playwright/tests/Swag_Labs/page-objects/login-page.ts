@@ -1,5 +1,5 @@
 import {Page, Locator, expect} from "@playwright/test"
-import data from "../test-data/login_data.json"
+import Data from "../test-data/login-data.json"
 
 export interface credentials {
     email: string
