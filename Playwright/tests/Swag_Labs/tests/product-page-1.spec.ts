@@ -43,6 +43,6 @@ test.describe("Product Testing", () => {
             await page.waitForTimeout(1000)
         }
 
-        expect(p.addToCartBadge).toHaveCount(6)
+        expect(p.addToCartBadge).toHaveText("6")
     })
 })
