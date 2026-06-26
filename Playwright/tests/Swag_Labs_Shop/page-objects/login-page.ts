@@ -1,12 +1,11 @@
 import {Page, Locator} from "@playwright/test"
-//import Data from "../test-data/login-data.json"
 
 export interface Credentials {
     email: string
     password: string
 }
 
-export class Login{
+export class LoginPage{
     page: Page
     emailInput: Locator
     passwordInput: Locator
@@ -24,5 +23,4 @@ export class Login{
         await this.passwordInput.fill(c.password)
         await this.button.click()
     }
-    
 }

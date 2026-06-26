@@ -1,14 +1,14 @@
 import {test, expect} from "@playwright/test"
-import {Login} from "../page-objects/login-page"
+import {LoginPage} from "../page-objects/login-page"
 import data from "../test-data/login-data.json"
 
 test.describe("Swag Labs Login", () => {
-    let c : Login
+    let c : LoginPage
     const credentials = data.credentials
     const errorMessages = data.errorLoginMessages
 
     test.beforeEach(async ({page}) => {
-        c = new Login(page)
+        c = new LoginPage(page)
         await page.goto("https://www.saucedemo.com/")
     })
 
