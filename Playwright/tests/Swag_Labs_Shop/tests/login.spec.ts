@@ -2,7 +2,7 @@ import {test, expect} from "@playwright/test"
 import {LoginPage} from "../page-objects/login-page"
 import data from "../test-data/login-data.json"
 
-test.describe("Swag Labs Login", () => {
+test.describe("Login Page", () => {
     let c : LoginPage
     const credentials = data.credentials
     const errorMessages = data.errorLoginMessages

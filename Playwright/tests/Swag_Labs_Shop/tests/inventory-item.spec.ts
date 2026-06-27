@@ -5,6 +5,7 @@ import loginCredentials from "../test-data/login-data.json"
 import { InventoryItem } from "../page-objects/inventory-item"
 
 test.describe("Inventory Item", () => {
+    
     let inventoryPage : InventoryPage
     let loginPage: LoginPage
     let inventoryItem: InventoryItem
