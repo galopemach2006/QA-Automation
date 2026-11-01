@@ -1,0 +1,19 @@
+{
+    "rightInformation" : {
+        "firstName" : "Mackers",
+        "lastName" : "Gapolers",
+        "zipPostalCode" : "6795" 
+    },
+
+    "blankInformation" : {
+        "firstName" : "",
+        "lastName" : "",
+        "zipPostalCode" : "" 
+    },
+
+    "wrongInformation" : {
+        "numberizedFirstName" : "6546546",
+        "numberizedLastName" : "76756765",
+        "alphabeticZipCode": "hello"
+    }
+}

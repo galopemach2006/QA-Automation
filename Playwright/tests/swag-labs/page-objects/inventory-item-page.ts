@@ -1,14 +1,14 @@
-import {expect, Page, Locator} from "@playwright/test"
+import {Page, Locator} from "@playwright/test"
 
-export class InventoryItem { 
-    page: Page
-    inventoryName: Locator
-    inventoryItemName : Locator
-    inventoryItemDescription : Locator
-    inventoryItemPrice : Locator 
-    inventoryItemImage : Locator
-    backToProductsButton : Locator
-    
+export class InventoryItemPage {
+    readonly page: Page
+    readonly inventoryName: Locator
+    readonly inventoryItemName: Locator
+    readonly inventoryItemDescription: Locator
+    readonly inventoryItemPrice: Locator
+    readonly inventoryItemImage: Locator
+    readonly backToProductsButton: Locator
+
     constructor(page: Page) {
         this.page = page
         this.inventoryName = page.locator(".inventory_item_name")
@@ -19,8 +19,8 @@ export class InventoryItem {
         this.backToProductsButton = page.locator("[data-test='back-to-products']")
     }
 
-    async inventoryItemCount() : Promise<number>{
-        const button = await this.inventoryName.count()
-        return button
+    async inventoryItemCount(): Promise<number> {
+        return await this.inventoryName.count()
     }
 }
+
