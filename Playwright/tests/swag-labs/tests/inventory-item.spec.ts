@@ -19,7 +19,7 @@ test.describe("Inventory Item", () => {
     })
 
     test("Inventory Item 001 - Verify items visibility on details page", async () => {
-        const itemCount = await inventoryItemPage.inventoryItemCount()
+        const itemCount = await inventoryItemPage.inventoryItemName.count()
 
         for(let i = 0; i < itemCount; i++) {
             await inventoryItemPage.inventoryName.nth(i).click()

@@ -18,9 +18,5 @@ export class InventoryItemPage {
         this.inventoryItemImage = page.locator("img[class='inventory_details_img']")
         this.backToProductsButton = page.locator("[data-test='back-to-products']")
     }
-
-    async inventoryItemCount(): Promise<number> {
-        return await this.inventoryName.count()
-    }
 }
 
